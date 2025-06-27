@@ -1,37 +1,123 @@
-   <!DOCTYPE html>
-   <html>
-    <head>
-        <title>My First Webpage</title>
-    </head>
-    <body>
-    <ul>
-        <li>ABDULQUDDUS</li>
-        <li>PROMISE</li>
-        <li>UBAIDULLAH</li>
-        <li>FAROUK</li>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My First Webpage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif']
+          },
+          colors: {
+            primary: '#1D4ED8',
+            secondary: '#F59E0B',
+            dark: '#0F172A'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    .fade-in {
+      animation: fadeIn 2s ease-in-out forwards;
+      opacity: 0;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body class="bg-dark text-white font-sans min-h-screen flex flex-col items-center justify-center space-y-10 p-6">
+
+  <header class="text-center fade-in">
+    <h1 class="text-4xl font-bold text-secondary drop-shadow-lg">OUR BROTHERHOOD</h1>
+    <p class="text-lg text-gray-300 mt-2">Bound by blood, love, and football.</p>
+  </header>
+
+  <section class="fade-in">
+    <ul class="bg-primary p-6 rounded-xl shadow-lg space-y-2 text-center">
+      <li class="text-white text-xl font-semibold hover:scale-105 transition-transform">ABDULQUDDUS</li>
+      <li class="text-white text-xl font-semibold hover:scale-105 transition-transform">PROMISE</li>
+      <li class="text-white text-xl font-semibold hover:scale-105 transition-transform">UBAIDULLAH</li>
+      <li class="text-white text-xl font-semibold hover:scale-105 transition-transform">FAROUK</li>
     </ul>
-    <a href="https://google.com">MY BROTHERS</a>
-    <img src="image/image1.webp">
-    <table border="1">
-        <tr>
-         <td>I am abdulquddus</td>  
-         <td>MESSI</td> 
+  </section>
+
+  <section class="fade-in text-center">
+    <a href="https://google.com" target="_blank"
+       class="bg-secondary text-dark px-5 py-2 rounded-full font-semibold hover:bg-yellow-400 transition-all shadow-md">
+      MY BROTHERS
+    </a>
+  </section>
+
+  <section class="fade-in">
+    <img src="image/image1.webp" alt="Brotherhood Image" class="w-72 h-72 object-cover rounded-2xl shadow-2xl border-4 border-secondary hover:scale-105 transition-transform duration-300">
+  </section>
+
+  <section class="fade-in">
+    <table class="min-w-full bg-white text-dark rounded-xl overflow-hidden shadow-lg">
+      <thead>
+        <tr class="bg-secondary text-white text-left">
+          <th class="py-3 px-6">Name</th>
+          <th class="py-3 px-6">Favorite Player</th>
         </tr>
-        <tr>
-            <td>I am promise</td>
-             <td>RONALDO</td>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        <tr class="hover:bg-gray-100 transition">
+          <td class="py-3 px-6">I am Abdulquddus</td>
+          <td class="py-3 px-6">Messi</td>
         </tr>
-        <tr>
-            <td>I am ubaidullah</td>
-            <td>NEYMAR</td>
+        <tr class="hover:bg-gray-100 transition">
+          <td class="py-3 px-6">I am Promise</td>
+          <td class="py-3 px-6">Ronaldo</td>
         </tr>
-        <tr>
-            <td>I am farouk</td>
-            <td>MBAPPE</td>
+        <tr class="hover:bg-gray-100 transition">
+          <td class="py-3 px-6">I am Ubaidullah</td>
+          <td class="py-3 px-6">Neymar</td>
         </tr>
+        <tr class="hover:bg-gray-100 transition">
+          <td class="py-3 px-6">I am Farouk</td>
+          <td class="py-3 px-6">Mbappe</td>
+        </tr>
+      </tbody>
     </table>
-    <Div>
-        i am a web developer
-    </Div>
+  </section>
+
+  <footer class="fade-in text-center mt-10">
+    <div class="text-lg bg-primary px-6 py-4 rounded-xl shadow-inner hover:bg-blue-700 transition">
+      I am a <span class="text-secondary font-bold">Web Developer</span>
+    </div>
+  </footer>
+
+  <!-- JS Animation on Scroll -->
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.3,
+      rootMargin: "0px 0px -100px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("opacity-100");
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
 </body>
-   </html>
+</html>
